@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   collapsed = true;
+  @Output() selectDisplayElement = new EventEmitter<{
+    recipeListDisplay: boolean;
+    shoppingListDisplay: boolean;
+  }>();
+
+  onSelectDisplayElement(recipeBookFlag: boolean, shoppingListFlag: boolean) {
+    this.selectDisplayElement.emit({
+      recipeListDisplay: recipeBookFlag,
+      shoppingListDisplay: shoppingListFlag,
+    });
+  }
 }
