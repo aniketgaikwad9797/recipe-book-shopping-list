@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecipeBookShoppingList';
-  showRecipeBook = false;
+  showRecipeBook = true;
   showShoppingList = false;
 
   onSelectDisplay(selectedElementFlags: {
