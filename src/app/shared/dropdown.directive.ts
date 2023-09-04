@@ -7,8 +7,10 @@ export class DropdownDirective {
   dropdownOpen = false;
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  @HostListener('click') onClick() {
-    this.dropdownOpen = !this.dropdownOpen;
+  @HostListener('document:click', ['$event']) onClick(event: Event) {
+    this.dropdownOpen = this.el.nativeElement.contains(event.target)
+      ? !this.dropdownOpen
+      : false;
     if (this.dropdownOpen)
       this.renderer.addClass(this.el.nativeElement, 'open');
     else this.renderer.removeClass(this.el.nativeElement, 'open');
