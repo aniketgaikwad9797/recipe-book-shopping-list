@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { RecipeService } from '../shared/services/recipe.service';
 
@@ -11,7 +11,9 @@ import { RecipeService } from '../shared/services/recipe.service';
 export class RecipeBookComponent {
   recipeItem: Recipe;
 
-  onSelectRecipeItemDetails(singleRecipeDetails) {
-    this.recipeItem = singleRecipeDetails;
+  constructor(private recipeService: RecipeService) {
+    this.recipeService.selectRecipe.subscribe(
+      (selectedRecipeItm: Recipe) => (this.recipeItem = selectedRecipeItm)
+    );
   }
 }

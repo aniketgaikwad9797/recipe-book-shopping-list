@@ -1,3 +1,4 @@
+import { EventEmitter } from '@angular/core';
 import { Recipe } from 'src/app/recipe-book/recipe.model';
 
 export class RecipeService {
@@ -17,5 +18,10 @@ export class RecipeService {
   getRecipes() {
     //slice returns a copy of the exact array
     return this.completeRecipeList.slice();
+  }
+
+  selectRecipe = new EventEmitter<Recipe>();
+  selectRecipeItem(){
+
   }
 }
