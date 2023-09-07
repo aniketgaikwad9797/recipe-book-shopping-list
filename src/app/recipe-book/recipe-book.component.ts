@@ -12,8 +12,9 @@ export class RecipeBookComponent {
   recipeItem: Recipe;
 
   constructor(private recipeService: RecipeService) {
-    this.recipeService.selectRecipe.subscribe(
-      (selectedRecipeItm: Recipe) => (this.recipeItem = selectedRecipeItm)
-    );
+    this.recipeService.selectRecipe.subscribe((selectedRecipeItm: Recipe) => {
+      this.recipeItem = selectedRecipeItm;
+      console.log(selectedRecipeItm);
+    });
   }
 }
