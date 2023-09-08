@@ -17,4 +17,12 @@ export class ShoppingService {
     this.shoppngIngredients.push(newIngredient);
     this.shoppingIngredientsChanged.emit(this.shoppngIngredients.slice());
   }
+
+  addRecipeIngredients(recipeIngredients: Ingredient[]) {
+    this.shoppngIngredients.push(...recipeIngredients);
+    //Alternate soln using concat method
+    //concat returns a new array altogether
+    //wheras push modifies the existing one
+    this.shoppngIngredients = this.shoppngIngredients.concat(recipeIngredients);
+  }
 }
