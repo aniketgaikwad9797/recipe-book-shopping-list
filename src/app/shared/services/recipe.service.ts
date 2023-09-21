@@ -23,6 +23,13 @@ export class RecipeService {
     return this.completeRecipeList.slice();
   }
 
+  getRecipe(name: string): Recipe {
+    const recipe = this.completeRecipeList.find((recipeList) => {
+      return recipeList.name === name;
+    });
+    return recipe;
+  }
+
   selectRecipe = new EventEmitter<Recipe>();
   selectRecipeItem() {}
 }

@@ -10,8 +10,5 @@ import { RecipeService } from 'src/app/shared/services/recipe.service';
 export class RecipeItemComponent {
   @Input() singleRecipeItem: Recipe;
 
-  constructor(private recipeService: RecipeService) {}
-  selectedItem() {
-    this.recipeService.selectRecipe.emit(this.singleRecipeItem);
-  }
+  constructor() {}
 }

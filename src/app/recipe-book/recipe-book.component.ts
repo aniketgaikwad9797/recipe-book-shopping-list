@@ -9,12 +9,7 @@ import { RecipeService } from '../shared/services/recipe.service';
   providers: [RecipeService],
 })
 export class RecipeBookComponent {
-  recipeItem: Recipe;
 
-  constructor(private recipeService: RecipeService) {
-    this.recipeService.selectRecipe.subscribe((selectedRecipeItm: Recipe) => {
-      this.recipeItem = selectedRecipeItm;
-      console.log(selectedRecipeItm);
-    });
+  constructor() {
   }
 }

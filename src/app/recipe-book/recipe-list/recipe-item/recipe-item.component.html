@@ -1,18 +1,18 @@
 <a
-style="cursor: pointer;"
-class="list-group-item clearfix"
-(click)="selectedItem()"
+  style="cursor: pointer"
+  class="list-group-item clearfix"
+  [routerLink]="['/recipebook', singleRecipeItem.name]"
 >
-<div class="pull-left">
-  <h4 class="list-group-item-heading">{{ singleRecipeItem.name }}</h4>
-  <p class="list-group-item-text">{{ singleRecipeItem.description }}</p>
-</div>
-<span class="pull-right">
-  <img
-    [src]="singleRecipeItem.imagePath"
-    alt=""
-    class="img-responsive"
-    style="max-height: 50px;"
-  />
-</span>
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ singleRecipeItem.name }}</h4>
+    <p class="list-group-item-text">{{ singleRecipeItem.description }}</p>
+  </div>
+  <span class="pull-right">
+    <img
+      [src]="singleRecipeItem.imagePath"
+      alt=""
+      class="img-responsive"
+      style="max-height: 50px"
+    />
+  </span>
 </a>
