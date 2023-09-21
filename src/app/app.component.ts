@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecipeBookShoppingList';
-  showRecipeBook = true;
-  showShoppingList = false;
-
-  onSelectDisplay(selectedElementFlags: {
-    recipeListDisplay: boolean;
-    shoppingListDisplay: boolean;
-  }) {
-    this.showRecipeBook = selectedElementFlags.recipeListDisplay;
-    this.showShoppingList = selectedElementFlags.shoppingListDisplay;
-  }
 }

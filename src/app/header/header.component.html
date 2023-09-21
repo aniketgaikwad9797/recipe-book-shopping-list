@@ -17,10 +17,12 @@
     >
       <ul class="nav navbar-nav">
         <li>
-          <a href="#" (click)="onSelectDisplayElement(true, false)">Recipes</a>
+          <a [routerLink]="['/recipebook']" routerLinkActive="active"
+            >Recipes</a
+          >
         </li>
         <li>
-          <a href="#" (click)="onSelectDisplayElement(false, true)"
+          <a [routerLink]="['/shoppinglist']" routerLinkActive="active"
             >Shopping List</a
           >
         </li>
