@@ -11,23 +11,8 @@ import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 import { FormsModule } from '@angular/forms';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingService } from './shared/services/shopping-list.service';
-import { Routes, RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'recipebook',
-    pathMatch: 'full',
-  },
-  {
-    path: 'recipebook',
-    component: RecipeBookComponent,
-  },
-  {
-    path: 'shoppinglist',
-    component: ShoppingListComponent,
-  },
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +25,7 @@ const appRoutes: Routes = [
     RecipeBookComponent,
     DropdownDirective,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ShoppingService],
   bootstrap: [AppComponent],
 })
