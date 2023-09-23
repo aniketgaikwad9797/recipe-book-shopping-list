@@ -4,6 +4,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
 import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.component';
+import { EditRecipeComponent } from './recipe-book/edit-recipe/edit-recipe.component';
 
 const appRoutes: Routes = [
   {
@@ -20,8 +21,16 @@ const appRoutes: Routes = [
         component: RecipeStartComponent,
       },
       {
+        path: 'new',
+        component: EditRecipeComponent,
+      },
+      {
         path: ':recipeId',
         component: RecipeDetailComponent,
+      },
+      {
+        path: ':recipeId/edit',
+        component: EditRecipeComponent,
       },
     ],
   },
