@@ -3,6 +3,7 @@ import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
+import { RecipeStartComponent } from './recipe-book/recipe-start/recipe-start.component';
 
 const appRoutes: Routes = [
   {
@@ -15,7 +16,11 @@ const appRoutes: Routes = [
     component: RecipeBookComponent,
     children: [
       {
-        path: ':recipeName',
+        path: '',
+        component: RecipeStartComponent,
+      },
+      {
+        path: ':recipeId',
         component: RecipeDetailComponent,
       },
     ],
