@@ -32,13 +32,10 @@ export class RecipeService {
     return recipe;
   }
 
-  getRecipeById(id:number){
+  getRecipeById(id: number) {
     const recipe = this.completeRecipeList.find((recipeList) => {
       return recipeList.id === id;
     });
     return recipe;
   }
-
-  selectRecipe = new EventEmitter<Recipe>();
-  selectRecipeItem() {}
 }

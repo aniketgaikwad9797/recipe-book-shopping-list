@@ -1,8 +1,8 @@
+import { Subject } from 'rxjs';
 import { Ingredient } from '../ingredient.model';
-import { EventEmitter } from '@angular/core';
 
 export class ShoppingService {
-  shoppingIngredientsChanged = new EventEmitter<Ingredient[]>();
+  shoppingIngredientsChanged = new Subject<Ingredient[]>();
   private shoppngIngredients: Ingredient[] = [
     new Ingredient('Apple', 25),
     new Ingredient('Banana', 12),
@@ -15,12 +15,12 @@ export class ShoppingService {
 
   addShoppingIngredient(newIngredient: Ingredient) {
     this.shoppngIngredients.push(newIngredient);
-    this.shoppingIngredientsChanged.emit(this.shoppngIngredients.slice());
+    this.shoppingIngredientsChanged.next(this.shoppngIngredients.slice());
   }
 
   addRecipeIngredients(recipeIngredients: Ingredient[]) {
     this.shoppngIngredients.push(...recipeIngredients);
-    this.shoppingIngredientsChanged.emit(this.shoppngIngredients.slice());
+    this.shoppingIngredientsChanged.next(this.shoppngIngredients.slice());
     //Alternate soln using concat method
     //concat returns a new array altogether
     //wheras push modifies the existing one
