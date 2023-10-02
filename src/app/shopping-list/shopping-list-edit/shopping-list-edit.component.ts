@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingService } from 'src/app/shared/services/shopping-list.service';
@@ -8,8 +8,20 @@ import { ShoppingService } from 'src/app/shared/services/shopping-list.service';
   templateUrl: './shopping-list-edit.component.html',
   styleUrls: ['./shopping-list-edit.component.css'],
 })
-export class ShoppingListEditComponent {
+export class ShoppingListEditComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) {}
+  editingMode = false;
+  editingItemIndex: number;
+  editingItem: Ingredient;
+
+  ngOnInit(): void {
+    this.shoppingService.itemForEditing.subscribe((index: number) => {
+      this.editingMode = true;
+      this.editingItemIndex = index;
+      this.editingItem = this.shoppingService.getShoppingIngredient(index);
+      console.log(this.editingItem);
+    });
+  }
 
   onAddIngredient(editForm: NgForm) {
     console.log(editForm);

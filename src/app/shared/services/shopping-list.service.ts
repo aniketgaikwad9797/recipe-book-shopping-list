@@ -3,10 +3,15 @@ import { Ingredient } from '../ingredient.model';
 
 export class ShoppingService {
   shoppingIngredientsChanged = new Subject<Ingredient[]>();
+  itemForEditing = new Subject<number>();
   private shoppngIngredients: Ingredient[] = [
     new Ingredient('Apple', 25),
     new Ingredient('Banana', 12),
   ];
+
+  getShoppingIngredient(index: number) {
+    return this.shoppngIngredients[index];
+  }
 
   getShoppingIngredients() {
     //Returning an exact copy of the above array
