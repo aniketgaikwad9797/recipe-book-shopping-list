@@ -31,7 +31,11 @@ export class ShoppingListEditComponent implements OnInit {
     console.log(editForm);
     const values = editForm.value;
     const newIngredient = new Ingredient(values.nameField, values.amountField);
-    this.shoppingService.addShoppingIngredient(newIngredient);
-    //this.ingredientAdded.emit(newIngredient);
+    if (this.editingMode)
+      this.shoppingService.updateShoppingIngredient(
+        this.editingItemIndex,
+        newIngredient
+      );
+    else this.shoppingService.addShoppingIngredient(newIngredient);
   }
 }

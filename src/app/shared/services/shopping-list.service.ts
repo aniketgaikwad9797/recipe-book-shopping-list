@@ -19,7 +19,14 @@ export class ShoppingService {
   }
 
   addShoppingIngredient(newIngredient: Ingredient) {
+    console.log(newIngredient);
     this.shoppngIngredients.push(newIngredient);
+    this.shoppingIngredientsChanged.next(this.shoppngIngredients.slice());
+  }
+
+  updateShoppingIngredient(index: number, updatedIngredient: Ingredient) {
+    console.log(updatedIngredient);
+    this.shoppngIngredients[index] = updatedIngredient;
     this.shoppingIngredientsChanged.next(this.shoppngIngredients.slice());
   }
 

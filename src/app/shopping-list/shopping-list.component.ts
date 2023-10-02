@@ -18,8 +18,10 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.ingredients = this.shoppingService.getShoppingIngredients();
     this.ingredientsChangedSubscription =
       this.shoppingService.shoppingIngredientsChanged.subscribe(
-        (changedIngredientsList: Ingredient[]) =>
-          (this.ingredients = changedIngredientsList)
+        (changedIngredientsList: Ingredient[]) => {
+          console.log(changedIngredientsList);
+          this.ingredients = changedIngredientsList;
+        }
       );
   }
 
