@@ -28,7 +28,6 @@ export class ShoppingListEditComponent implements OnInit {
   }
 
   onAddIngredient(editForm: NgForm) {
-    console.log(editForm);
     const values = editForm.value;
     const newIngredient = new Ingredient(values.nameField, values.amountField);
     if (this.editingMode)
