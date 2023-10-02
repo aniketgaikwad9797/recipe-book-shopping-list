@@ -10,6 +10,7 @@ import { ShoppingService } from 'src/app/shared/services/shopping-list.service';
 })
 export class ShoppingListEditComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) {}
+  @ViewChild('editForm') editingForm: NgForm;
   editingMode = false;
   editingItemIndex: number;
   editingItem: Ingredient;
@@ -19,7 +20,10 @@ export class ShoppingListEditComponent implements OnInit {
       this.editingMode = true;
       this.editingItemIndex = index;
       this.editingItem = this.shoppingService.getShoppingIngredient(index);
-      console.log(this.editingItem);
+      this.editingForm.setValue({
+        nameField: this.editingItem.name,
+        amountField: this.editingItem.amount,
+      });
     });
   }
 
