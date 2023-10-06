@@ -12,6 +12,7 @@ export class EditRecipeComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  recipeIngredients = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,18 +31,21 @@ export class EditRecipeComponent implements OnInit {
     let recipeName = '';
     let recipeImageURL = '';
     let recipeDescription = '';
+    
 
     if (this.editMode) {
       let recipe = this.recipeService.getRecipeById(this.id);
+      console.log(recipe);
       recipeName = recipe.name;
       recipeImageURL = recipe.imagePath;
       recipeDescription = recipe.description;
+      this.recipeIngredients = recipe.ingredients
     }
 
     this.recipeForm = new FormGroup({
       name: new FormControl(recipeName),
       imageUrl: new FormControl(recipeImageURL),
-      descripton: new FormControl(recipeDescription),
+      description: new FormControl(recipeDescription),
     });
   }
 }
