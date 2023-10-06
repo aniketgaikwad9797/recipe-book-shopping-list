@@ -3,6 +3,7 @@ import { Recipe } from 'src/app/recipe-book/recipe.model';
 import { Ingredient } from '../ingredient.model';
 
 export class RecipeService {
+  recipeListChanged = new EventEmitter<Recipe[]>();
   private completeRecipeList: Recipe[] = [
     new Recipe(
       0,
@@ -37,5 +38,15 @@ export class RecipeService {
       return recipeList.id === id;
     });
     return recipe;
+  }
+
+  addrecipe(newRecipe: Recipe) {
+    this.completeRecipeList.push(newRecipe);
+    this.recipeListChanged.emit(this.completeRecipeList.slice());
+  }
+
+  updateRecipe(index: number, recipe: Recipe) {
+    this.completeRecipeList[index] = recipe;
+    this.recipeListChanged.emit(this.completeRecipeList.slice());
   }
 }

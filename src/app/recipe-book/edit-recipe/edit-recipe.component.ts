@@ -25,6 +25,9 @@ export class EditRecipeComponent implements OnInit {
       this.editMode = data.recipeId !== undefined;
       this.initForm();
     });
+    this.recipeService.recipeListChanged.subscribe((value) => {
+      console.log(value);
+    });
   }
 
   private initForm() {
@@ -66,6 +69,9 @@ export class EditRecipeComponent implements OnInit {
 
   onSubmitForm() {
     console.log(this.recipeForm);
+    if (this.editMode)
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+    else this.recipeService.addrecipe(this.recipeForm.value);
   }
 
   onAddIngredients() {
