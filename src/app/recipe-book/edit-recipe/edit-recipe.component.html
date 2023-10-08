@@ -23,13 +23,14 @@
               id="imageurl"
               class="form-control"
               formControlName="imagePath"
+              #imagePath
             />
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
-          <img src="" alt="" class="img-responsive" />
+        <div class="col-xs-12" *ngIf="imagePath.value">
+          <img [src]="imagePath.value" alt="imagePath" class="img-responsive" />
         </div>
       </div>
       <div class="row">
@@ -91,7 +92,9 @@
           >
             Save
           </button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
         </div>
       </div>
     </form>
