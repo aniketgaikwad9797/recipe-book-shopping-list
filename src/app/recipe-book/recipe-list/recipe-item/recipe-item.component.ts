@@ -9,6 +9,7 @@ import { RecipeService } from 'src/app/shared/services/recipe.service';
 })
 export class RecipeItemComponent {
   @Input() singleRecipeItem: Recipe;
+  @Input() index: number;
 
   constructor() {}
 }

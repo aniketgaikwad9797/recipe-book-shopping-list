@@ -21,8 +21,8 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
-      this.id = +data.recipeId;
-      this.editMode = data.recipeId !== undefined;
+      this.id = +data.recipeIndex;
+      this.editMode = data.recipeIndex !== null;
       this.initForm();
     });
     this.recipeService.recipeListChanged.subscribe((value) => {
@@ -37,7 +37,7 @@ export class EditRecipeComponent implements OnInit {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
-      let recipe = this.recipeService.getRecipeById(this.id);
+      let recipe = this.recipeService.getRecipeByIndex(this.id);
       recipeName = recipe.name;
       recipeImageURL = recipe.imagePath;
       recipeDescription = recipe.description;
@@ -57,8 +57,8 @@ export class EditRecipeComponent implements OnInit {
 
     this.recipeForm = new FormGroup({
       name: new FormControl(recipeName, Validators.required),
-      imageUrl: new FormControl(recipeImageURL, Validators.required),
       description: new FormControl(recipeDescription, Validators.required),
+      imagePath: new FormControl(recipeImageURL, Validators.required),
       ingredients: recipeIngredients,
     });
   }

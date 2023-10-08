@@ -11,6 +11,7 @@ import { RecipeService } from 'src/app/shared/services/recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   singleRecipeItemDetail: Recipe;
+  recipeIndex: number;
 
   constructor(
     private shoppingService: ShoppingService,
@@ -20,11 +21,11 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const recipeId = this.route.snapshot.params.recipeId;
-    this.singleRecipeItemDetail = this.recipeService.getRecipeById(+recipeId);
     this.route.params.subscribe((data: Params) => {
-      this.singleRecipeItemDetail = this.recipeService.getRecipeById(
-        +data.recipeId
+      console.log(data, 'route data');
+      this.recipeIndex = data.recipeIndex;
+      this.singleRecipeItemDetail = this.recipeService.getRecipeByIndex(
+        +data.recipeIndex
       );
     });
   }
@@ -36,10 +37,6 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onEditRecipe() {
-    this.router.navigate([
-      'recipebook',
-      this.singleRecipeItemDetail.id,
-      'edit',
-    ]);
+    this.router.navigate(['recipebook', this.recipeIndex, 'edit']);
   }
 }

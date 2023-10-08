@@ -25,11 +25,11 @@ const appRoutes: Routes = [
         component: EditRecipeComponent,
       },
       {
-        path: ':recipeId',
+        path: ':recipeIndex',
         component: RecipeDetailComponent,
       },
       {
-        path: ':recipeId/edit',
+        path: ':recipeIndex/edit',
         component: EditRecipeComponent,
       },
     ],
