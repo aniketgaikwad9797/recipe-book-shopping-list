@@ -20,9 +20,11 @@ export class EditRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initForm();
     this.route.params.subscribe((data: Params) => {
+      console.log(data.recipeIndex);
       this.id = +data.recipeIndex;
-      this.editMode = data.recipeIndex !== null;
+      this.editMode = data.recipeIndex !== undefined;
       this.initForm();
     });
     this.recipeService.recipeListChanged.subscribe((value) => {
@@ -37,6 +39,7 @@ export class EditRecipeComponent implements OnInit {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
+      console.log(this.editMode);
       let recipe = this.recipeService.getRecipeByIndex(this.id);
       recipeName = recipe.name;
       recipeImageURL = recipe.imagePath;
@@ -72,6 +75,7 @@ export class EditRecipeComponent implements OnInit {
     if (this.editMode)
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     else this.recipeService.addrecipe(this.recipeForm.value);
+    this.editMode = false;
   }
 
   onAddIngredients() {
