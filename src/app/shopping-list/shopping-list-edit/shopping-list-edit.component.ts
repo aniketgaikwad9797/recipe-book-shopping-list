@@ -1,5 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingService } from 'src/app/shared/services/shopping-list.service';
 
@@ -8,23 +15,26 @@ import { ShoppingService } from 'src/app/shared/services/shopping-list.service';
   templateUrl: './shopping-list-edit.component.html',
   styleUrls: ['./shopping-list-edit.component.css'],
 })
-export class ShoppingListEditComponent implements OnInit {
+export class ShoppingListEditComponent implements OnInit, OnDestroy {
   constructor(private shoppingService: ShoppingService) {}
   @ViewChild('editForm') editingForm: NgForm;
   editingMode = false;
   editingItemIndex: number;
   editingItem: Ingredient;
+  subscription: Subscription;
 
   ngOnInit(): void {
-    this.shoppingService.itemForEditing.subscribe((index: number) => {
-      this.editingMode = true;
-      this.editingItemIndex = index;
-      this.editingItem = this.shoppingService.getShoppingIngredient(index);
-      this.editingForm.setValue({
-        nameField: this.editingItem.name,
-        amountField: this.editingItem.amount,
-      });
-    });
+    this.subscription = this.shoppingService.itemForEditing.subscribe(
+      (index: number) => {
+        this.editingMode = true;
+        this.editingItemIndex = index;
+        this.editingItem = this.shoppingService.getShoppingIngredient(index);
+        this.editingForm.setValue({
+          nameField: this.editingItem.name,
+          amountField: this.editingItem.amount,
+        });
+      }
+    );
   }
 
   onAddIngredient(editForm: NgForm) {
@@ -48,5 +58,9 @@ export class ShoppingListEditComponent implements OnInit {
   onDeleteIngredient() {
     this.onClear();
     this.shoppingService.deleteShoppingIngredient(this.editingItemIndex);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
