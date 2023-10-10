@@ -24,6 +24,11 @@ export class RecipeService {
     return this.completeRecipeList.slice();
   }
 
+  updateRecipes(recipes: Recipe[]) {
+    this.completeRecipeList = recipes;
+    this.recipeListChanged.next(this.completeRecipeList.slice());
+  }
+
   getRecipe(name: string): Recipe {
     const recipe = this.completeRecipeList.find((recipeList) => {
       return recipeList.name === name;
