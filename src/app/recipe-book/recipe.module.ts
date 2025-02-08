@@ -22,11 +22,5 @@ import { RecipeRoutingModule } from './recipe-routing.module';
     DropdownDirectiveRevision,
   ],
   imports: [RecipeRoutingModule, CommonModule, ReactiveFormsModule],
-  exports: [
-    RecipeListComponent,
-    RecipeItemComponent,
-    RecipeDetailComponent,
-    RecipeBookComponent,
-  ],
 })
 export class RecipeModule {}
