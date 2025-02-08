@@ -7,11 +7,7 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: 'recipebook',
     pathMatch: 'full',
-  },
-  {
-    path: 'shoppinglist',
-    component: ShoppingListComponent,
-  },
+  }
 ];
 
 @NgModule({
