@@ -3,13 +3,11 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeBookComponent } from './recipe-book.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { DropdownDirectiveRevision } from '../shared/dropdown-dir-revision';
 import { RecipeRoutingModule } from './recipe-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +16,8 @@ import { RecipeRoutingModule } from './recipe-routing.module';
     RecipeDetailComponent,
     RecipeBookComponent,
     RecipeStartComponent,
-    EditRecipeComponent,
-    DropdownDirectiveRevision,
+    EditRecipeComponent
   ],
-  imports: [RecipeRoutingModule, CommonModule, ReactiveFormsModule],
+  imports: [RecipeRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class RecipeModule {}
