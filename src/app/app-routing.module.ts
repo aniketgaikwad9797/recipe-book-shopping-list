@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
@@ -7,7 +6,12 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: 'recipebook',
     pathMatch: 'full',
+  },
+  {
+    path: 'recipebook',
+    loadChildren: ()=>import('./recipe-book/recipe.module').then((m)=>m.RecipeModule)
   }
+
 ];
 
 @NgModule({
